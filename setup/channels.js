@@ -1,6 +1,6 @@
 module.exports = (channels, guild) => {
     channels.forEach(channel => {
-        if(typeof channel === "string") {
+        if(typeof channel === 'string') {
             channel = { name: channel }
         }
         guild.createChannel(
