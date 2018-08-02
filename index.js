@@ -21,8 +21,8 @@ if(!program.file) {
 }
 const config = JSON.parse(fs.readFileSync(program.file))
 
-const guildId = findParam('serverId')
-if(!guildId) {
+const serverId = findParam('serverId')
+if(!serverId) {
     console.log('No server ID was found')
     process.exit(1)
 }
@@ -36,7 +36,7 @@ const client = new Discord.Client()
 client.login(token)
 
 client.on('ready', () => {
-    const workingGuild = client.guilds.get(guildId)
+    const workingGuild = client.guilds.get(serverId)
     Object.keys(config).forEach(key => {
         const setupFn = setup[key]
         if(typeof setupFn !== 'function') {
