@@ -1,0 +1,16 @@
+{
+    "name": "create-discord-server",
+    "version": "1.0.0",
+    "description": "Set up an entire Discord server from a configuration file.",
+    "main": "./index.js",
+    "repository": "https://github.com/ifvictr/create-discord-server",
+    "author": "Victor Truong <me@ifvictr.com>",
+    "license": "MIT",
+    "bin": {
+        "create-discord-server": "./index.js"
+    },
+    "dependencies": {
+        "commander": "^2.16.0",
+        "discord.js": "^11.3.2"
+    }
+}
