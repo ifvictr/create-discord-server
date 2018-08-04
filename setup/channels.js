@@ -1,5 +1,5 @@
-module.exports = async (channels, guild, cb) => {
-    await Promise.all(channels.map(channel => {
+module.exports = (channels, guild) => {
+    return Promise.all(channels.map(channel => {
         if(typeof channel === 'string') {
             channel = { name: channel }
         }
@@ -10,5 +10,4 @@ module.exports = async (channels, guild, cb) => {
             channel.reason
         )
     }))
-    cb()
 }

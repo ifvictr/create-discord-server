@@ -1,5 +1,5 @@
-module.exports = async (emojis, guild, cb) => {
-    await Promise.all(emojis.map(emoji => {
+module.exports = (emojis, guild) => {
+    return Promise.all(emojis.map(emoji => {
         return guild.createEmoji(
             emoji.image,
             emoji.name,
@@ -7,5 +7,4 @@ module.exports = async (emojis, guild, cb) => {
             emoji.reason
         )
     }))
-    cb()
 }

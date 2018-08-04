@@ -1,19 +1,11 @@
-module.exports = async (server, guild, cb) => {
-    // TODO: Refactor to be non-repetitive
-    if(server.name) {
-        await guild.setName(server.name)
-    }
-    if(server.icon) {
-        await guild.setIcon(server.icon)
-    }
-    if(server.splash) {
-        await guild.setSplash(server.splash)
-    }
-    if(server.region) {
-        await guild.setRegion(server.region)
-    }
-    if(server.verificationLevel) {
-        await guild.setVerificationLevel(server.verificationLevel)
-    }
-    cb()
+const capitalize = str => str[0].toUpperCase() + str.substring(1)
+
+module.exports = (server, guild) => {
+    return Promise.all(Object.keys(server).map(key => {
+        const fn = guild[`set${capitalize(key)}`] // Dynamically find the correct method
+        if(typeof fn !== 'function') {
+            return
+        }
+        return fn(server[key])
+    }))
 }
