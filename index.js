@@ -37,7 +37,11 @@ client.login(token)
 
 client.on('ready', () => {
     const workingGuild = client.guilds.get(serverId)
+    const excludedParams = ['serverId', 'token']
     Object.keys(config).forEach(key => {
+        if(excludedParams.includes(key)) {
+            return
+        }
         const setupFn = setup[key]
         if(typeof setupFn !== 'function') {
             console.log(`\`${key}\` isn't a valid config option, skipping`)
