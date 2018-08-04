@@ -1,8 +1,9 @@
-module.exports = (roles, guild) => {
-    roles.forEach(role => {
+module.exports = async (roles, guild, cb) => {
+    await Promise.all(roles.map(role => {
         if(typeof role === 'string') {
             role = { name: role }
         }
-        guild.createRole(role, role.reason)
-    })
+        return guild.createRole(role, role.reason)
+    }))
+    cb()
 }

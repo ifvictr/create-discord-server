@@ -1,18 +1,19 @@
-module.exports = (server, guild) => {
+module.exports = async (server, guild, cb) => {
     // TODO: Refactor to be non-repetitive
     if(server.name) {
-        guild.setName(server.name)
+        await guild.setName(server.name)
     }
     if(server.icon) {
-        guild.setIcon(server.icon)
+        await guild.setIcon(server.icon)
     }
     if(server.splash) {
-        guild.setSplash(server.splash)
+        await guild.setSplash(server.splash)
     }
     if(server.region) {
-        guild.setRegion(server.region)
+        await guild.setRegion(server.region)
     }
     if(server.verificationLevel) {
-        guild.setVerificationLevel(server.verificationLevel)
+        await guild.setVerificationLevel(server.verificationLevel)
     }
+    cb()
 }

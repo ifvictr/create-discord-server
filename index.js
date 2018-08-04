@@ -38,6 +38,8 @@ client.login(token)
 client.on('ready', () => {
     const workingGuild = client.guilds.get(serverId)
     const excludedParams = ['serverId', 'token']
+    let completedTasks = 0
+    let totalTasks = 0
     Object.keys(config).forEach(key => {
         if(excludedParams.includes(key)) {
             return
@@ -47,8 +49,13 @@ client.on('ready', () => {
             console.log(`\`${key}\` isn't a valid config option, skipping`)
             return
         }
-        setupFn(config[key], workingGuild)
+        totalTasks++
+        setupFn(config[key], workingGuild, () => {
+            completedTasks++
+            if(completedTasks === totalTasks) {
+                console.log('All done!')
+                client.destroy()
+            }
+        })
     })
-    // TODO: Disconnect client on completion
-    // client.destroy()
 })
