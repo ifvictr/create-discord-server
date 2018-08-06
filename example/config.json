@@ -1,0 +1,47 @@
+{
+    "token": "NDc0MDkyNTc5MDA5NDYyMjcy.DklGgQ.vmF-CIydPQRf_6kdDnz_dMs0f2c",
+    "serverId": "474336632175329310",
+    "server": {
+        "name": "My Server",
+        "icon": "./images/icon.png"
+    },
+    "channels": [
+        "hello",
+        {
+            "name": "random",
+            "type": "text"
+        },
+        {
+            "name": "talk",
+            "type": "voice"
+        }
+    ],
+    "emojis": [
+        {
+            "name": "crying",
+            "image": "./images/emojis/crying.png"
+        },
+        {
+            "name": "happy",
+            "image": "./images/emojis/happy.png"
+        },
+        {
+            "name": "poo",
+            "image": "./images/emojis/poo.png"
+        },
+        {
+            "name": "sad",
+            "image": "./images/emojis/sad.png"
+        }
+    ],
+    "roles": [
+        {
+            "name": "Admin",
+            "color": "#ff0000"
+        },
+        {
+            "name": "Moderator",
+            "color": "#00ff00"
+        }
+    ]
+}
