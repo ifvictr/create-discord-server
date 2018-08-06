@@ -10,7 +10,9 @@
         "create-discord-server": "./index.js"
     },
     "dependencies": {
+        "chalk": "^2.4.1",
         "commander": "^2.16.0",
-        "discord.js": "^11.3.2"
+        "discord.js": "^11.3.2",
+        "ora": "^3.0.0"
     }
 }

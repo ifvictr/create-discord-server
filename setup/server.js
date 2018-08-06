@@ -1,6 +1,6 @@
 const capitalize = str => str[0].toUpperCase() + str.substring(1)
 
-module.exports = (server, guild) => {
+module.exports = async (server, guild, spinner) => {
     // Was throwing a `TypeError: Cannot read property 'edit' of undefined`
     // return Promise.all(Object.keys(server).map(key => {
     //     const fn = guild[`set${capitalize(key)}`] // Dynamically find the correct method
@@ -9,29 +9,37 @@ module.exports = (server, guild) => {
     //     }
     //     return fn(server[key])
     // }))
-    const promises = []
-
-    if (server.afkTimeout) {
-        promises.push(guild.setAFKTimeout(server.afkTimeout))
+    try {
+        if (Number.isInteger(server.afkTimeout)) {
+            await guild.setAFKTimeout(server.afkTimeout)
+            spinner.succeed(`AFK timeout set to ${server.afkTimeout}`)
+        }
+        if (Number.isInteger(server.explicitContentFilter)) {
+            await guild.setExplicitContentFilter(server.explicitContentFilter)
+            spinner.succeed(`Explicit content filter set to ${server.explicitContentFilter}`)
+        }
+        if (server.icon) {
+            await guild.setIcon(server.icon)
+            spinner.succeed('Server icon set')
+        }
+        if (server.name) {
+            await guild.setName(server.name)
+            spinner.succeed(`Server name set to ${server.name}`)
+        }
+        if (server.region) {
+            await guild.setRegion(server.region)
+            spinner.succeed(`Server region set to ${server.region}`)
+        }
+        if (server.splash) {
+            await guild.setSplash(server.splash)
+            spinner.succeed('Server splash set')
+        }
+        if (Number.isInteger(server.verificationLevel)) {
+            await guild.setVerificationLevel(server.verificationLevel)
+            spinner.succeed(`Verification level set to ${server.verificationLevel}`)
+        }
     }
-    if (server.explicitContentFilter) {
-        promises.push(guild.setExplicitContentFilter(server.explicitContentFilter))
+    catch (e) {
+        spinner.warn(`Caught an exception when configuring the server: ${e.message}`)
     }
-    if (server.icon) {
-        promises.push(guild.setIcon(server.icon))
-    }
-    if (server.name) {
-        promises.push(guild.setName(server.name))
-    }
-    if (server.region) {
-        promises.push(guild.setRegion(server.region))
-    }
-    if (server.splash) {
-        promises.push(guild.setSplash(server.splash))
-    }
-    if (server.verificationLevel) {
-        promises.push(guild.setVerificationLevel(server.verificationLevel))
-    }
-
-    return Promise.all(promises)
 }
