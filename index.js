@@ -3,6 +3,7 @@ const program = require('commander')
 const Discord = require('discord.js')
 const fs = require('fs')
 const ora = require('ora')
+const path = require('path')
 const setup = require('./setup')
 const package = require('./package')
 
@@ -27,6 +28,8 @@ else if (!fs.existsSync(program.file)) {
     process.exit(1)
 }
 const config = JSON.parse(fs.readFileSync(program.file))
+const configDir = path.dirname(path.resolve(program.file))
+process.chdir(configDir) // Work in the user's config directory
 
 const serverId = findSetting('serverId')
 if (!serverId) {
