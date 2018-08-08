@@ -1,4 +1,4 @@
-# create-discord-server
+# [create-discord-server](https://www.npmjs.com/package/create-discord-server)
 
 Set up an entire Discord server from a configuration file.
 
