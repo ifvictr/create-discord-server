@@ -58,6 +58,8 @@ Each value needs to be a channel name (`string`) or an object following the belo
 
 #### `emojis` (`array`)
 
+Each value needs to be an object following the below structure:
+
 - `image` (`string`): Filepath of the emoji
 - `name` (`string`): Name of the emoji
 - `reason` (`string`): Why this emoji exists
