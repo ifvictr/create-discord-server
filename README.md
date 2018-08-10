@@ -49,7 +49,7 @@ Below is a detailed description of all the configurations that can be set. If a 
 
 #### `channels` (`array`)
 
-Each value needs to be a channel name (`string`) or an object following the below structure:
+Each value needs to be a channel name (`string`) or an object that follows the below structure:
 
 - `name` (`string`): Name of the channel
 - `overwrites` (`array`): Permission overwrites
@@ -67,7 +67,7 @@ Each value needs to be an object following the below structure:
 
 #### `roles` (`array`)
 
-Each value needs to be a role name (`string`) or an object following the below structure:
+Each value needs to be a role name (`string`) or an object that follows the below structure:
 
 - `color` (`string`): Hex color of the role
 - `hoist` (`boolean`): If this role is pinned in the user listing
